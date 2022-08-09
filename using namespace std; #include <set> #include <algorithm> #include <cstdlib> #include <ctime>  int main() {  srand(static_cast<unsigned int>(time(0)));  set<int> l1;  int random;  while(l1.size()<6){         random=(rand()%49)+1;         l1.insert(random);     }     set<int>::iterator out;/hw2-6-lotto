@@ -1,0 +1,25 @@
+using namespace std;
+#include <set>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+
+int main()
+{
+ srand(static_cast<unsigned int>(time(0)));
+ set<int> l1;
+ int random;
+ while(l1.size()<6){
+        random=(rand()%49)+1;
+        l1.insert(random);
+    }
+    set<int>::iterator out;//print with spaces using iterator
+    for(out = l1.begin(); out != l1.end(); out++){
+
+            cout<<*out<<" ";
+    }
+    cout<<"\n";
+
+ 
+    return 0;
+}
