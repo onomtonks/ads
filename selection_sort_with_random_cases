@@ -1,0 +1,64 @@
+import random
+import time
+def randnum(n):
+    arr=[]
+    for i in range(n):
+        arr.append(random.randint(0,10000))
+    return arr
+def sel_sort(arr):
+    
+    
+    for i in range(len(arr)):
+        min_in=i
+        for j in range(i+1,len(arr)):
+            if arr[j]<arr[min_in]:
+                min_in=j
+        if(min_in!=i):
+            arr[i], arr[min_in] = arr[min_in], arr[i]
+    return arr
+    
+    
+def worst(n):
+    arr2=randnum(n)
+    temp=0
+    for i in range(1,n):
+        if arr2[i]>arr2[temp]:
+            temp=i
+    if(temp!=0):
+        temp2=arr2[temp]
+        arr2[temp]=arr2[0]
+        arr2[0]=temp2
+    return arr2
+    
+def avg_time(n):
+    avg=0
+    for i in range(10):
+        arr=randnum(n)
+        start=time.time()
+        sorted_arr=sel_sort(arr)
+        end=time.time()
+        actual_time=end-start
+        avg=avg+actual_time
+    return avg/10
+    
+n = int(input()) 
+arr=randnum(n)
+#best time
+sorted_arr=sel_sort(arr)
+start=time.time()
+sel_sort(sorted_arr)
+end=time.time()
+print("best time:")
+print(end-start)
+
+#worst time   
+start=time.time()
+worst(n)
+end=time.time()
+print("Worst time:")
+print(end-start)
+
+print("average time:")
+print(avg_time(n))
+
+
